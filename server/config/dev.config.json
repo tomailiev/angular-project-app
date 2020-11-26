@@ -1,0 +1,25 @@
+{
+    "server": {
+        "port": 3000
+    },
+    "cors": {
+        "url": "http://localhost:4200"
+    },
+    "database": {
+        "connectionString": "mongodb://127.0.0.1:27017",
+        "databaseName": "eBikeStore"
+    },
+    "secret": "new socks butcher brewing sky warms",
+    "allowedEndpoints": {
+        "/api/v1/users": [
+            "post",
+            "put"
+        ],
+        "/api/v1/movies": [
+            "get"
+        ],
+        "/api/v1/ebikes": [
+            "get"
+        ]
+    }
+}

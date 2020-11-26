@@ -1,0 +1,23 @@
+{
+    "server": {
+        "port": 8080
+    },
+    "cors": {
+        "url": "https://angular-final-project-app.herokuapp.com:8080"
+    },
+    "database": {
+        "databaseName": "eBikeStore"
+    },
+    "allowedEndpoints": {
+        "/api/v1/users": [
+            "post",
+            "put"
+        ],
+        "/api/v1/movies": [
+            "get"
+        ],
+        "/api/v1/ebikes": [
+            "get"
+        ]
+    }
+}

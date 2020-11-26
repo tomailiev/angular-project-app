@@ -1,13 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FooterComponent } from './footer/footer.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 
 
 
 @NgModule({
-  declarations: [NavigationComponent],
+  declarations: [NavigationComponent, FooterComponent, HomeComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MatToolbarModule,
+    RouterModule,
+    MatIconModule,
+    MatButtonModule
+  ],
+  exports: [
+    NavigationComponent,
+    FooterComponent,
+    HomeComponent
   ]
 })
 export class CoreModule { }
