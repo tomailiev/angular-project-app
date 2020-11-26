@@ -3,6 +3,7 @@ const config = require(`./${environment}.config.json`);
 if (environment === 'prod') {
     const connectionString = process.env.MONGO_URL;
     const secret = process.env.SECRET;
-    Object.assign(config, { secret, database: { connectionString } });
+    const port = process.env.PORT;
+    Object.assign(config, { secret, database: { connectionString }, server: { port } });
 }
 module.exports = config;
