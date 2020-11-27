@@ -1,8 +1,35 @@
-<mat-toolbar color="primary">
-    <span><a routerLink="/">Home</a></span>
-    <span><a routerLink="/">About</a></span>
-    <span><a routerLink="/">Users</a></span>
-    <span><a routerLink="/">Login</a></span>
-    <span><a routerLink="/">Logout</a></span>
-    
-</mat-toolbar>
+<header color="primary">
+    <div class="container">
+        <button mat-button routerLink="/">
+            <img src="https://cdn2.iconfinder.com/data/icons/ecology-173/100/e-bike-ecology-electric-vehicles-transport-bicycle-byke-flash-thunderbolt-sign-32.png" alt="Store logo">
+        </button>    
+    </div>
+
+    <div class="container left">
+        <button mat-button routerLink="/">Home</button>
+        <button mat-button routerLink="/">About</button>
+        <button mat-button routerLink="/">E-bikes</button>
+        <button mat-button routerLink="/">Sell</button>
+        <button mat-button routerLink="/">Contact</button>
+    </div>
+
+    <div class="container right">
+        <button mat-button [matMenuTriggerFor]="userMenu">
+            <mat-icon aria-hidden="false" aria-label="profile icon">person</mat-icon>
+        </button>
+        <mat-menu #userMenu="matMenu">
+            <div *ngIf="!isLoggedIn">
+                <button mat-menu-item>Login</button>
+                <button mat-menu-item>Register</button>
+            </div>
+            <div *ngIf="isLoggedIn">
+                <button mat-menu-item>Profile</button>
+                <button mat-menu-item>Wishlist</button>
+            </div>
+        </mat-menu>
+        <button mat-button [disabled]="!hasCart">
+            <mat-icon aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
+        </button>
+    </div>
+
+</header>

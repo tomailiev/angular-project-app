@@ -1,0 +1,15 @@
+footer {
+    background-color: aquamarine;
+    min-height: 60px;
+}
+
+.info {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+
+.copyright {
+    text-align: center;
+}
+

@@ -1,10 +1,25 @@
-span {
-    margin-right: 20px;
+header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    background-color: aquamarine;
+    min-height: 60px;
 }
-
-span a {
+/* div a {
     text-decoration: none;
     color: azure;
     font-size: 15px;
+} */
+
+.container.left{
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    max-width: 30%;
 }
+
+
 
