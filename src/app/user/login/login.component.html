@@ -1,1 +1,17 @@
-<p>login works!</p>
+
+<div class="login-container">
+    <h1>Log In</h1>
+    <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
+        <mat-form-field>
+            <mat-label for="name">Email</mat-label>
+            <input matInput #email type="email" name="email" ngModel required>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="password">Password</mat-label>
+            <input matInput #email type="password" name="password" ngModel required>
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Login</button>
+        <!-- <p>*=Required field</p> -->
+    </form>
+    <div class="register-prompt">No account? <a routerLink="/user/register"><strong>Register</strong></a> instead</div>
+</div>

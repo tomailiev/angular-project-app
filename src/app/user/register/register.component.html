@@ -1,1 +1,46 @@
-<p>register works!</p>
+<div class="register-container">
+    <h1>Register</h1>
+    <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
+        <mat-form-field>
+            <mat-label for="name">Full name</mat-label>
+            <input matInput #name="ngModel" type="text" name="name" ngModel required minlength="3"
+                placeholder="Enter at least 3 characters">
+            <mat-error *ngIf="name.touched && name.errors?.required">
+                Please enter your name
+            </mat-error>
+            <mat-error *ngIf="name.touched && name.errors?.minlength">
+                Please enter 3 or more characters
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="email">Email</mat-label>
+            <input matInput #email="ngModel" type="email" name="email" ngModel required email
+                placeholder="Enter a valid email">
+            <mat-error *ngIf="email.touched && email.errors?.required">
+                Please enter your email
+            </mat-error>
+            <mat-error *ngIf="email.touched && email.errors?.email">
+                Please enter a valid email address
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="password">Password</mat-label>
+            <input matInput #password="ngModel" type="password" name="password" ngModel required minlength="6"
+                placeholder="6 or more characters">
+            <mat-error *ngIf="password.touched && name.errors?.required">
+                Please enter a password
+            </mat-error>
+            <mat-error *ngIf="password.touched && password.errors?.minlength">
+                Please enter 3 or more characters
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="rePassword">Confirm Password</mat-label>
+            <input matInput #repeatPassword="ngModel" type="password" name="rePassword" ngModel required
+                placeholder="Must match password">
+        </mat-form-field>
+        <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Register</button>
+    </form>
+    <div class="login-prompt">Already have an account? <a routerLink="/user/login"><strong>Login</strong></a> instead
+    </div>
+</div>

@@ -12,4 +12,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  submitHandler(userData: { email: string, password: string }): void {
+    console.log(userData);
+  }
+
 }

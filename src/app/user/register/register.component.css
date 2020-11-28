@@ -1,0 +1,48 @@
+.register-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% auto 30%;
+    grid-template-rows: 25% 60% auto;
+}
+
+h1 {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+    justify-self: center;
+    align-self: end;
+    color: azure;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+form {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 1;
+    justify-self: center;
+    align-self: center;
+    background-color: #ffffff;
+    min-height: 300px;
+    padding: 50px;
+    border-radius: 5px;
+    position: relative;
+}
+
+form>mat-form-field {
+    display: block;
+    margin-bottom: 12px;
+}
+
+form>button{
+    position: absolute;
+    left: 33%;
+    bottom: 10%;
+}
+
+.login-prompt {
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 1;
+    align-self: start;
+    justify-self: center;
+    font-size: 16px;
+}

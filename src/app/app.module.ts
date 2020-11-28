@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EbikesModule } from './ebikes/ebikes.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoreModule,
     SharedModule,
     UserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    EbikesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
