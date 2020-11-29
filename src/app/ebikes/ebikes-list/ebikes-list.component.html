@@ -1,1 +1,19 @@
-<p>ebikes-list works!</p>
+<div class="list-container">
+    <h1>Find your dream E-bike!</h1>
+    <mat-card *ngFor="let ebike of ebikes" class="ebike-card">
+        <a [routerLink]="['/ebikes/details', ebike._id]">
+            <mat-card-header>
+                <mat-card-title>{{ebike.brand}}</mat-card-title>
+                <mat-card-subtitle>{{ebike.model}}</mat-card-subtitle>
+                <mat-card-subtitle>${{ebike.price}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="{{ebike.imageUrl}}" alt="Photo of an ebike">
+        </a>
+        <mat-card-footer>
+            <mat-card-actions align="start">
+                <button mat-button>WISHLIST</button>
+                <button mat-button>ADD TO CART</button>
+            </mat-card-actions>
+        </mat-card-footer>
+    </mat-card>
+</div>

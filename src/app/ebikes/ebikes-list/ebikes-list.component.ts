@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IEbike } from 'src/app/shared/interfaces/ebike';
+import { EbikesApiService } from '../ebikes-api.service';
 
 @Component({
   selector: 'app-ebikes-list',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EbikesListComponent implements OnInit {
 
-  constructor() { }
+  ebikes: IEbike[]; 
+
+  constructor(private apiService: EbikesApiService) { }
 
   ngOnInit(): void {
+    this.apiService.getAll().subscribe(items => {
+      this.ebikes = items;
+    });
   }
 
 }

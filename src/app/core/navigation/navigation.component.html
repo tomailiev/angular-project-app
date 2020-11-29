@@ -9,8 +9,8 @@
         <button mat-button routerLink="/">Home</button>
         <button mat-button routerLink="/about">About</button>
         <button mat-button routerLink="/ebikes/list">E-bikes</button>
-        <button mat-button routerLink="/ebikes/sell">Sell</button>
         <button mat-button routerLink="/contact">Contact</button>
+        <button mat-button routerLink="/ebikes/sell" [disabled]="!isLoggedIn">Sell</button>
     </div>
 
     <div class="container right">
@@ -25,6 +25,7 @@
             <div *ngIf="isLoggedIn">
                 <button mat-menu-item [routerLink]="['/user/profile', 1]">Profile</button>
                 <button mat-menu-item [routerLink]="['/user/wishlist', 1]">Wishlist</button>
+                <button mat-menu-item (click)="logoutHandler()">Logout</button>
             </div>
         </mat-menu>
         <button mat-button [disabled]="!hasCart" [routerLink]="['/user/cart', 1]"> 

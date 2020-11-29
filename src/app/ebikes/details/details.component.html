@@ -1,1 +1,36 @@
-<p>details works!</p>
+<div class="details-container">
+    <div class="titles">
+        <h1>{{ebike.brand}}</h1>
+        <h3>{{ebike.model}}</h3>
+    </div>
+    <img src="{{ebike.imageUrl}}" alt="">
+    <mat-accordion multi="true">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Price
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>${{ebike.price}}</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Description
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>{{ebike.description}}</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Actions
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-action-row>
+                <button mat-flat-button color="primary">Add to cart</button>
+                <button mat-flat-button color="primary">Add to wishlist</button>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

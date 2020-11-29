@@ -2,7 +2,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: 30% auto 30%;
-    grid-template-rows: 25% 50% auto;
+    grid-template-rows: 150px auto 200px;
 }
 
 .home-container h1 {

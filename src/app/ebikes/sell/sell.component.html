@@ -1,1 +1,51 @@
-<p>sell works!</p>
+<div class="list-container">
+    <h1>List your item</h1>
+    <form #f="ngForm" (ngSubmit)="sellSubmitHandler(f.value)">
+        <mat-form-field>
+            <mat-label for="brand">Brand</mat-label>
+            <input matInput #brand="ngModel" type="text" name="brand" ngModel required placeholder="Enter a brand">
+            <mat-error *ngIf="brand.touched && brand.errors?.required">
+                Please enter a brand
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="model">Model</mat-label>
+            <input matInput #model="ngModel" type="text" name="model" ngModel required placeholder="Enter a model">
+            <mat-error *ngIf="model.touched && model.errors?.required">
+                Please enter a model
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="price">Price</mat-label>
+            <input matInput #price="ngModel" type="number" name="price" ngModel required min="0"
+                placeholder="Enter price in USD">
+            <mat-error *ngIf="price.touched && price.errors?.required">
+                Please enter a price
+            </mat-error>
+            <mat-error *ngIf="price.touched && price.errors?.min">
+                Please enter a number larger than 0
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="imageUrl">Image URL</mat-label>
+            <input matInput #imageUrl="ngModel" type="text" name="imageUrl" ngModel required
+                placeholder="Enter a URL">
+            <mat-error *ngIf="imageUrl.touched && imageUrl.errors?.required">
+                Please enter an imageUrl
+            </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label for="description">Description</mat-label>
+            <textarea matInput #description="ngModel" type="text" name="description" ngModel
+                required minlength="10" placeholder="10 or more characters"></textarea>
+            <mat-error *ngIf="description.touched && description.errors?.required">
+                Please enter a description
+            </mat-error>
+            <mat-error *ngIf="description.touched && description.errors?.minlength">
+                Please enter 10 or more characters
+            </mat-error>
+        </mat-form-field>
+        <button class="cancel" type="button" mat-stroked-button color="primary" (click)="f.reset()">Cancel</button>
+        <button class="submit" type="submit" mat-raised-button color="primary" [disabled]="f.invalid">List it!</button>
+    </form>
+</div>
