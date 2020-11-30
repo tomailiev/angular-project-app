@@ -6,5 +6,6 @@ export interface IUser {
     cart: IEbike[];
     wishlist: IEbike[];
     selling: IEbike[];
+    owned: IEbike[];
     _id: string;
 }

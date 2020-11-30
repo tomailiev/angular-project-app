@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CurrentUserService } from './current-user.service';
 
 
 
@@ -8,9 +7,6 @@ import { CurrentUserService } from './current-user.service';
   declarations: [],
   imports: [
     CommonModule
-  ],
-  providers: [
-    CurrentUserService
   ]
 })
 export class SharedModule { }

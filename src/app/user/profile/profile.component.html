@@ -1,1 +1,74 @@
-<p>profile works!</p>
+<ng-template #emailEditMode>
+    <div>
+        <input matInput type="text" value="{{user.email}}">
+    </div>
+    <div>
+        <button mat-raised-button color="link" (click)="toggleEmailEdit()">Cancel</button>
+        <button mat-raised-button color="link" (click)="toggleEmailEdit()">Save</button>
+    </div>
+</ng-template>
+<ng-template #emailNormalMode>
+    <div>{{user.email}}</div>
+    <div>
+        <button mat-raised-button color="link" (click)="toggleEmailEdit()">Edit</button>
+    </div>
+</ng-template>
+<ng-template #nameEditMode>
+    <div>
+        <input matInput type="text" value="{{user.name}}">
+    </div>
+    <div>
+        <button mat-raised-button color="link" (click)="toggleNameEdit()">Cancel</button>
+        <button mat-raised-button color="link" (click)="toggleEmailEdit()">Save</button>
+    </div>
+</ng-template>
+<ng-template #nameNormalMode>
+    <div>{{user.name}}</div>
+    <div>
+        <button mat-raised-button color="link" (click)="toggleNameEdit()">Edit</button>
+    </div>
+</ng-template>
+
+<div class="spacer"></div>
+<div class="profile-container">
+    <div class="avatar">
+        <img src="../../../assets/profile.svg" alt="">
+    </div>
+    <div class="container">
+        <mat-divider></mat-divider>
+        <div class="row">
+            <div>Name:</div>
+            <ng-container *ngTemplateOutlet="editingName? nameEditMode : nameNormalMode"></ng-container>
+            
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row">
+            <div>Email:</div>
+            <ng-container *ngTemplateOutlet="editingEmail? emailEditMode : emailNormalMode"></ng-container>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row" *ngIf="user.selling.length > 0">
+            <div>Selling:</div>
+            <div><a [routerLink]="['/ebikes/details', user.wishlist[0]._id]">{{user.selling[0].brand}}</a>...</div>
+            <div>
+                <button mat-raised-button color="link" routerLink="/ebikes/sell">List Another</button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row" *ngIf="user.cart.length > 0">
+            <div>Cart:</div>
+            <div><a [routerLink]="['/ebikes/details', user.wishlist[0]._id]">{{user.cart[0].brand}}</a>...</div>
+            <div>
+                <button mat-raised-button color="link" [routerLink]="['/user/cart', user._id]">View cart</button>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+        <div class="row" *ngIf="user.wishlist.length > 0">
+            <div>Wishlist:</div>
+            <div><a [routerLink]="['/ebikes/details', user.wishlist[0]._id]">{{user.wishlist[0].brand}}</a>...</div>
+            <div>
+                <button mat-raised-button color="link"  [routerLink]="['/user/wishlist', user._id]">View wishlist</button>
+            </div>
+        </div>
+    </div>
+</div>

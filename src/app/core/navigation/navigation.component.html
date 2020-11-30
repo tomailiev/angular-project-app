@@ -23,12 +23,12 @@
                 <button mat-menu-item routerLink="/user/register">Register</button>
             </div>
             <div *ngIf="isLoggedIn">
-                <button mat-menu-item [routerLink]="['/user/profile', 1]">Profile</button>
-                <button mat-menu-item [routerLink]="['/user/wishlist', 1]">Wishlist</button>
+                <button mat-menu-item [routerLink]="['/user/profile', currentUser._id]">Profile</button>
+                <button mat-menu-item [routerLink]="['/user/wishlist', currentUser._id]">Wishlist</button>
                 <button mat-menu-item (click)="logoutHandler()">Logout</button>
             </div>
         </mat-menu>
-        <button mat-button [disabled]="!hasCart" [routerLink]="['/user/cart', 1]"> 
+        <button *ngIf="!!currentUser" mat-button [disabled]="!hasCart" [routerLink]="['/user/cart', currentUser._id]"> 
             <mat-icon aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
         </button>
     </div>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CurrentUserService } from 'src/app/shared/current-user.service';
+import { Component, DoCheck, OnChanges, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IUser } from 'src/app/shared/interfaces/user';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
   selector: 'app-navigation',
@@ -8,18 +10,29 @@ import { CurrentUserService } from 'src/app/shared/current-user.service';
 })
 export class NavigationComponent implements OnInit {
   
-  isLoggedIn: boolean = false;
-  hasCart: boolean = false;
+  // isLoggedIn: boolean = false;
+  // hasCart: boolean = false;
 
-  constructor(private currentUserService: CurrentUserService) { }
+  get isLoggedIn(): boolean {
+    return !!this.authService.getUser();
+  }
+
+  get currentUser(): IUser | null {
+    return this.authService.getUser();
+  }
+
+  get hasCart(): boolean {
+    return this.isLoggedIn ? this.authService.user.cart.length > 0 : false;
+  }
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.isLoggedIn = this.currentUserService.getLoggedIn();
-    this.hasCart = this.currentUserService.getUser().cart.length > 0;
   }
 
   logoutHandler(): void {
-    console.log('loggin out in the future');
+    this.authService.logout();
+    this.router.navigate(['/home']);
   }
 
 }

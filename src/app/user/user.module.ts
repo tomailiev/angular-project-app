@@ -10,9 +10,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { ProfileComponent } from './profile/profile.component';
 import { CartComponent } from './cart/cart.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
-
-
-
+import { MatListModule } from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,12 @@ import { WishlistComponent } from './wishlist/wishlist.component';
     MatInputModule,
     RouterModule,
     UserRoutingModule,
-    MatButtonModule
+    MatButtonModule,
+    MatListModule,
+    MatDividerModule,
+    MatIconModule,
+    MatCardModule,
+    MatTableModule
   ],
   exports: [
     LoginComponent,
