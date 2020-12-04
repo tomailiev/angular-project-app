@@ -16,8 +16,7 @@ export class LoginComponent implements OnInit {
 
   submitHandler(userData: { email: string, password: string }): void {
     console.log(userData);
-    this.authService.login().subscribe(x => {
-      this.authService.user = x;
+    this.authService.login(userData).subscribe(x => {
       this.router.navigate(['/']);
     })
   }

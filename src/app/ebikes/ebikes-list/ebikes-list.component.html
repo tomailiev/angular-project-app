@@ -1,5 +1,4 @@
-<div class="list-container">
-    <h1>Find your dream E-bike!</h1>
+<ng-template #withEbikes>
     <mat-card *ngFor="let ebike of ebikes" class="ebike-card">
         <a [routerLink]="['/ebikes/details', ebike._id]">
             <mat-card-header>
@@ -9,11 +8,34 @@
             </mat-card-header>
             <img mat-card-image src="{{ebike.imageUrl}}" alt="Photo of an ebike">
         </a>
-        <mat-card-footer>
-            <mat-card-actions align="start">
-                <button mat-button>WISHLIST</button>
-                <button mat-button>ADD TO CART</button>
-            </mat-card-actions>
-        </mat-card-footer>
+        <!-- <mat-card-footer *ngIf="user && user._id !== ebike.creatorId"> -->
+            <!-- <mat-card-actions align="start">
+                <button mat-button (click)="addToWishlist(ebike._id)" [disabled]="ebike.wishlisted.includes(user._id)">WISHLIST</button>
+                <button mat-button (click)="addToCart(ebike._id)" [disabled]="isInCart(ebike)">ADD TO CART</button>
+            </mat-card-actions> -->
+        <!-- </mat-card-footer> -->
     </mat-card>
+</ng-template>
+
+<ng-template #withoutEbikes>
+    <app-no-content [content]="noContent"></app-no-content>
+</ng-template>
+
+<ng-template #noContent>
+    No bikes for sale found. 
+    <ng-container *ngTemplateOutlet="user ? withUser : withoutUser"></ng-container>
+</ng-template>
+
+<ng-template #withUser>
+    Have one for sale? <a routerLink="/ebikes/sell">List it!</a>
+</ng-template>
+
+<ng-template #withoutUser>
+    <a routerLink="/user/login">Login</a> to list yours!
+</ng-template>
+
+
+<div class="list-container">
+    <h1>Find your dream E-bike!</h1>
+    <ng-container *ngTemplateOutlet=" ebikes && ebikes.length > 0 ? withEbikes : withoutEbikes"></ng-container>
 </div>

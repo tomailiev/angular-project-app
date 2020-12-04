@@ -7,6 +7,8 @@
     "database": {
         "databaseName": "eBikeStore"
     },
+    "saltRounds": 14,
+    "cookieName": "x-auth-token",
     "allowedEndpoints": {
         "/api/v1/users": [
             "post",

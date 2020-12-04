@@ -1,0 +1,17 @@
+.about-container {
+    max-width: 60%;
+    margin: auto;
+    padding: 50px 0;
+    color: azure;
+}
+
+.content {
+    background-color: rgba(22, 22, 22, 0.67);
+    border-radius: 5px;
+    padding:  20px;
+}
+
+.content>h1 {
+    text-align: center;
+    font-weight: bold;
+}

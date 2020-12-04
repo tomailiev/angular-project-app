@@ -9,20 +9,19 @@ import { AuthService } from 'src/app/user/auth.service';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
-  
-  // isLoggedIn: boolean = false;
-  // hasCart: boolean = false;
+
+  isMenuOpen: boolean = false;
 
   get isLoggedIn(): boolean {
-    return !!this.authService.getUser();
+    return this.authService.isLoggedIn;
   }
 
   get currentUser(): IUser | null {
-    return this.authService.getUser();
+    return this.authService.currentUser;
   }
 
   get hasCart(): boolean {
-    return this.isLoggedIn ? this.authService.user.cart.length > 0 : false;
+    return this.isLoggedIn ? this.authService.currentUser.cart.length > 0 : false;
   }
 
   constructor(private authService: AuthService, private router: Router) { }
@@ -31,8 +30,11 @@ export class NavigationComponent implements OnInit {
   }
 
   logoutHandler(): void {
-    this.authService.logout();
-    this.router.navigate(['/home']);
+    this.authService.logout()
+      .subscribe(x => {
+        console.log(x);
+        this.router.navigate(['/home']);
+      });
   }
 
 }

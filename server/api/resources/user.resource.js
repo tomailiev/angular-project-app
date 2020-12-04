@@ -12,10 +12,14 @@ router.route('/')
     .post(userMiddleware.filterBody, loginController.login)
     .put(userMiddleware.validation(), userMiddleware.filterBody, loginController.register)
 
+router.route('/loginCheck')
+    .get(loginController.loginCheck);
+    
 router.route('/:id')
     .get(userController.getOne)
     .put(userController.updateOne)
     .delete(userController.deleteOne)
     .post(loginController.logout);
+
 
 module.exports = router;

@@ -10,6 +10,8 @@
         "databaseName": "eBikeStore"
     },
     "secret": "new socks butcher brewing sky warms",
+    "saltRounds": 14,
+    "cookieName": "x-auth-token",
     "allowedEndpoints": {
         "/api/v1/users": [
             "post",

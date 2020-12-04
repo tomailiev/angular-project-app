@@ -14,7 +14,8 @@ const auth = require('./server/api/middleware/auth');
 
 const app = express();
 app.use(cors({
-    origin: config.cors.url
+    origin: config.cors.url,
+    credentials: true
 }));
 
 app.use(cookieParser());

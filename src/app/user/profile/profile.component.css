@@ -43,3 +43,7 @@
     color: #e2e1e1;
     font-weight: bold;
 }
+
+button {
+    margin-left: 5px;
+}

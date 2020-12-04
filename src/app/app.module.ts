@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EbikesModule } from './ebikes/ebikes.module';
+import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './Interceptors/';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import { EbikesModule } from './ebikes/ebikes.module';
     SharedModule,
     UserModule,
     BrowserAnimationsModule,
-    EbikesModule
+    EbikesModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

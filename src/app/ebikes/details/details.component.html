@@ -1,4 +1,4 @@
-<div class="details-container">
+<div class="details-container" *ngIf="!!ebike">
     <div class="titles">
         <h1>{{ebike.brand}}</h1>
         <h3>{{ebike.model}}</h3>
@@ -27,10 +27,12 @@
                     Actions
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-action-row>
-                <button mat-flat-button color="primary">Add to cart</button>
-                <button mat-flat-button color="primary">Add to wishlist</button>
+            <mat-action-row *ngIf="user && user._id !== ebike.creatorId">
+                <button mat-flat-button color="primary" (click)="addToCart()" [disabled]="isInCart">Add to cart</button>
+                <button mat-flat-button color="primary" (click)="addToWishlist()" [disabled]="isInWishlist">Add to wishlist</button>
             </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>
 </div>
+
+<div class="loader" *ngIf="!ebike">Loading</div>

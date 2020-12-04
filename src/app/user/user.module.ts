@@ -15,6 +15,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
+import {TableComponent} from './table/table.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import {MatTableModule} from '@angular/material/table';
     RegisterComponent,
     ProfileComponent,
     CartComponent,
-    WishlistComponent
+    WishlistComponent,
+    TableComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +38,8 @@ import {MatTableModule} from '@angular/material/table';
     MatDividerModule,
     MatIconModule,
     MatCardModule,
-    MatTableModule
+    MatTableModule,
+    SharedModule
   ],
   exports: [
     LoginComponent,

@@ -1,7 +1,9 @@
 .home-container {
     /* height: 100%; */
+    width: 100%;
+    margin-top: 0 auto;
     display: grid;
-    grid-template-columns: 30% auto 30%;
+    grid-template-columns: 10% auto 10%;
     grid-template-rows: 150px auto 200px;
 }
 
@@ -13,6 +15,8 @@
     color: azure;
     font-weight: bold;
     font-size: 40px;
+    text-align: center;
+    line-height: 1.2em;
 }
 
 .home-container img {

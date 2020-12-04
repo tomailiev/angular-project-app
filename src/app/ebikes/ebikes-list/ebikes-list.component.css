@@ -29,3 +29,8 @@ h1 {
 .ebike-card>a {
     text-decoration: none;
 }
+
+a {
+    color: royalblue;
+    text-decoration: none;
+}

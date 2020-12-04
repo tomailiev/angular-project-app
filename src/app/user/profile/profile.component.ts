@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { tap } from 'rxjs/operators';
+import { param } from 'express-validator';
+import { switchMap, tap } from 'rxjs/operators';
 import { IUser } from 'src/app/shared/interfaces/user';
 import { AuthService } from '../auth.service';
 
@@ -10,26 +11,34 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  
+
   user: IUser;
+  userId: string;
   editingEmail: boolean = false;
   editingName: boolean = false;
-  
+
   constructor(private route: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
     this.route.params.pipe(
-      tap((params: {id: string}) => {
-        console.log(params.id);
+      switchMap((params: { id: string }) => {
+        this.userId = params.id;
+        return this.authService.getOne(this.userId)
       })
-    ).subscribe(x => this.user = this.authService.getUser());
+    ).subscribe(user => {
+      this.user = user;
+    });
   }
 
-  toggleEmailEdit():void {
-    this.editingEmail = !this.editingEmail;
+  updateName(newName: string): void {
+    this.authService.updateOne({ name: newName })
+      .subscribe(user => {
+        this.user = user;
+        this.toggleNameEdit();
+      })
   }
 
-  toggleNameEdit():void {
+  toggleNameEdit(): void {
     this.editingName = !this.editingName;
   }
 }

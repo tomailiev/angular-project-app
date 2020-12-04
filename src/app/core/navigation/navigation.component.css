@@ -1,3 +1,27 @@
+@media screen and (max-width: 1280px) {
+    button.responsive-menu {
+        display: block;
+    }
+
+    div.container.left {
+        display: none;
+    }
+
+    div.container.left.open {
+        display: block;
+        justify-self: center;
+    }
+
+    div.container.left.open>button {
+        display: block;
+    }
+
+    button.home-icon {
+        display: none;
+    }
+}
+
+
 header {
     display: flex;
     flex-flow: row wrap;
@@ -20,6 +44,11 @@ header {
     justify-content: space-around;
     max-width: 30%;
 }
+
+.responsive-menu {
+    display: none;
+}
+
 
 
 

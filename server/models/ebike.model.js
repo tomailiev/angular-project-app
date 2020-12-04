@@ -14,16 +14,27 @@ const schema = new mongoose.Schema({
     toObject: { virtuals: true }
 });
 
+// schema.pre('find', handler);
+// schema.pre('findOne', handler);
+
+// function handler(next) {
+//     this
+//         // .populate('buyers')
+//         // .populate('wishlisted')
+//         // .populate('creatorId');
+//     next();
+// }
+
 schema.virtual('priceString').get(function () {
     return `$${this.price}`;
 });
 
-schema.virtual('buyersNum').get(function() {
+schema.virtual('buyersNum').get(function () {
     return this.buyers.length;
 });
 
-schema.virtual('wishlistedNum').get(function() {
+schema.virtual('wishlistedNum').get(function () {
     return this.wishlisted.length;
 });
 
-module.exports = mongoose.model('eBike', schema);
+module.exports = mongoose.model('ebike', schema);

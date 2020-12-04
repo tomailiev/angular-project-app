@@ -23,7 +23,7 @@ form {
     align-self: center;
     background-color: #ffffff;
     min-height: 480px;
-    width: 50%;
+    width: 60%;
     padding: 50px;
     border-radius: 5px;
     position: relative;
@@ -36,14 +36,14 @@ form>mat-form-field {
 
 form>button.cancel{
     position: absolute;
-    left: 30%;
-    bottom: 10%;
+    left: 20%;
+    bottom: 5%;
 }
 
 form>button.submit{
     position: absolute;
-    left: 60%;
-    bottom: 10%;
+    right: 20%;
+    bottom: 5%;
 }
 
 .login-prompt {
