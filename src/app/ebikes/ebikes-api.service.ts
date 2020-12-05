@@ -30,21 +30,21 @@ export class EbikesApiService {
     return this.http.get<IEbike>(`${environment.apiUrl}/ebikes/${id}`);
   }
 
-  updateOne(id: string, userProp: string, ebikeProp?: string): Observable<{ebike: IEbike, user: IUser} | IUser> {
-    if (ebikeProp) {
-      return forkJoin({
-        ebike: this.http.put<IEbike>(`${environment.apiUrl}/ebikes/${id}`, { $addToSet: { [ebikeProp]: this.authService.currentUser._id } }),
-        user: this.http.put<IUser>(`${environment.apiUrl}/users/${this.authService.currentUser._id}`, { $addToSet: { [userProp]: id } })
-      }).pipe(
-        tap((values:{user: IUser, ebike: IEbike}) => this.authService.currentUser = values.user)
-      )
-    }
+  // updateOne(id: string, userProp: string, ebikeProp?: string): Observable<{ebike: IEbike, user: IUser} | IUser> {
+  //   if (ebikeProp) {
+  //     return forkJoin({
+  //       ebike: this.http.put<IEbike>(`${environment.apiUrl}/ebikes/${id}`, { $addToSet: { [ebikeProp]: this.authService.currentUser._id } }),
+  //       user: this.http.put<IUser>(`${environment.apiUrl}/users/${this.authService.currentUser._id}`, { $addToSet: { [userProp]: id } })
+  //     }).pipe(
+  //       tap((values:{user: IUser, ebike: IEbike}) => this.authService.currentUser = values.user)
+  //     )
+  //   }
 
-    return this.http.put<IUser>(`${environment.apiUrl}/users/${this.authService.currentUser._id}`, { $addToSet: { [userProp]: id } })
-      .pipe(
-        tap((user: IUser) => this.authService.currentUser = user)
-      )
-  }
+  //   return this.http.put<IUser>(`${environment.apiUrl}/users/${this.authService.currentUser._id}`, { $addToSet: { [userProp]: id } })
+  //     .pipe(
+  //       tap((user: IUser) => this.authService.currentUser = user)
+  //     )
+  // }
 
   createOne(data: IEbikeBase): Observable<any> {
     const withCreator = Object.assign(data, { creatorId: this.authService.currentUser._id });

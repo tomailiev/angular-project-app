@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import {MatTableModule} from '@angular/material/table';
 import {TableComponent} from './table/table.component';
 import { SharedModule } from '../shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SharedModule } from '../shared/shared.module';
     MatIconModule,
     MatCardModule,
     MatTableModule,
-    SharedModule
+    SharedModule,
+    MatSnackBarModule
   ],
   exports: [
     LoginComponent,

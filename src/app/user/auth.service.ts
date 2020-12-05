@@ -50,7 +50,7 @@ export class AuthService {
         }),
         catchError(() => { 
           this.currentUser = null; 
-          console.log('error on getting current user');
+          console.log('no user detected');
           return of(null)
          })
       );

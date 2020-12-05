@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +10,30 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router,) { }
+
+  constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   submitHandler(userData: { email: string, password: string }): void {
-    console.log(userData);
-    this.authService.login(userData).subscribe(x => {
-      this.router.navigate(['/']);
+    this.authService.login(userData).subscribe(
+      user => {
+        this.openSnackBar('Login successful');
+      },
+      err => {
+        this.openSnackBar(err.error ? err.error.message : err.message)
+      },
+      () => {
+        this.router.navigate(['/']);
+      }
+    )
+  }
+
+  openSnackBar(message: string): void {
+    this._snackBar.open(message, 'Dismiss', {
+      verticalPosition: 'top',
+      duration: 2000
     })
   }
 

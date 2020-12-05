@@ -19,7 +19,6 @@ export class EbikesListComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.authService.currentUser;
     this.apiService.getAll().subscribe(items => {
-      console.log(items);
       
       this.ebikes = items;
     });

@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jwt = require('../../utils/jwt');
 const config = require('../../config');
 const cookieName = config.cookieName;
 
@@ -7,7 +7,7 @@ module.exports = function (model) {
         const { email, password } = req.body;
         model.findOne({ email })
             .then(doc => {
-                if (!doc) { next({ message: 'Email or password not recognized' }); return }
+                if (!doc) { throw ({ message: 'Email or password not recognized' });  }
                 return Promise.all([
                     doc.comparePasswords(password),
                     doc
@@ -15,13 +15,21 @@ module.exports = function (model) {
             })
             .then(([isCorrect, user]) => {
                 if (!isCorrect) {
-                    throw ({ message: 'Incorrect login' });
+                    throw ({ message: 'Email or password not recognized' });
                 }
-                jwt.sign({ email: user.email, _id: user._id }, config.secret, { expiresIn: '1h' }, (err, token) => {
-                    if (err) { return next(err) }
-                    res.cookie(cookieName, token, { httpOnly: true });
-                    res.status(200).send(user);
-                })
+                // jwt.sign({ email: user.email, _id: user._id }, config.secret, { expiresIn: '1h' }, (err, token) => {
+                //     if (err) { return next(err) }
+                //     res.cookie(cookieName, token, { httpOnly: true });
+                //     res.status(200).send(user);
+                // })
+                return Promise.all([
+                    jwt.jwtSign({ email: user.email, id: user._id }),
+                    user
+                ])
+            })
+            .then(([token, user]) => {
+                res.cookie(cookieName, token, { httpOnly: true });
+                res.status(200).send(user);
             })
             .catch(e => {
                 console.log(e);
@@ -61,7 +69,7 @@ module.exports = function (model) {
 
     function loginCheck(req, res, next) {
         if (res.locals.user) {
-            model.findOne({_id: res.locals.user._id})
+            model.findOne({ _id: res.locals.user._id })
                 .then(doc => {
                     console.log(doc);
                     res.status(200).send(doc);

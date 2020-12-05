@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { EbikesApiService } from './ebikes-api.service';
 import { SharedModule } from '../shared/shared.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -28,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     MatButtonModule,
     MatCardModule,
     MatExpansionModule,
-    SharedModule
+    SharedModule,
+    MatSnackBarModule
   ],
   exports: [
     SellComponent,

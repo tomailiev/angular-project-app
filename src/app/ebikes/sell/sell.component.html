@@ -17,7 +17,7 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label for="price">Price</mat-label>
-            <input matInput #price="ngModel" type="number" name="price" ngModel required min="0"
+            <input matInput #price="ngModel" type="number" name="price" ngModel required [min]="1"
                 placeholder="Enter price in USD">
             <mat-error *ngIf="price.touched && price.errors?.required">
                 Please enter a price

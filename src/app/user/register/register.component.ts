@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -9,17 +10,31 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   submitHandler(userData: {email: string, password: string, name: string}):void {
-    this.authService.register(userData).subscribe(x => {
-      console.log(x);
-      this.router.navigate(['/user/login']);
-    });
+    this.authService.register(userData).subscribe(
+      (user)=> {
+        this.openSnackBar('Successful registration. Please log in');
+      },
+      (err) => {
+        this.openSnackBar(err.error ? err.error.message : err.message)
+      },
+      () => {
+        this.router.navigate(['/user/login']);
+      }
+    );
     
+  }
+
+  openSnackBar(message: string): void {
+    this._snackBar.open(message, 'Dismiss', {
+      verticalPosition: 'top',
+      duration: 2000
+    })
   }
 
 }

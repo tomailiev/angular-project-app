@@ -21,7 +21,7 @@ app.use(cors({
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(express.static('./dist/project-app'));
-app.use(auth);
+// app.use(auth);
 
 api.connect('/api/v1', app);
 

@@ -59,5 +59,13 @@
                     wishlist</button>
             </div>
         </div>
+        <mat-divider></mat-divider>
+        <div class="row" *ngIf="user.owned.length > 0">
+            <div>Owned:</div>
+            <div><a [routerLink]="['/ebikes/details', user.owned[0]._id]">{{user.owned[0].brand}}</a>...</div>
+            <div>
+                <button mat-raised-button color="link" routerLink="/ebikes/sell">See all</button>
+            </div>
+        </div>
     </div>
 </div>
