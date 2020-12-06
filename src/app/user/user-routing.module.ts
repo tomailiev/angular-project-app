@@ -2,6 +2,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from '../core/auth.guard';
 import { CartComponent } from './cart/cart.component';
 import { LoginComponent } from './login/login.component';
+import { MyEbikesComponent } from './my-ebikes/my-ebikes.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
@@ -34,6 +35,11 @@ const routes: Routes = [
             {
                 path: 'wishlist/:id',
                 component: WishlistComponent,
+                data: { needsAuth: true }
+            },
+            {
+                path: 'myebikes/:id',
+                component: MyEbikesComponent,
                 data: { needsAuth: true }
             }
         ]

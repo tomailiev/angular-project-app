@@ -12,14 +12,18 @@ import { EbikesApiService } from '../ebikes-api.service';
 })
 export class SellComponent implements OnInit {
 
+  loading: boolean;
+
   constructor(private apiService: EbikesApiService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   sellSubmitHandler(data: IEbikeBase): void {
+    this.loading = true;
     this.apiService.createOne(data).subscribe(
       (ebike: IEbike) => {
+        this.loading = false;
         this.openSnackBar('Created successfully');
       },
       (err) => {

@@ -1,5 +1,4 @@
 <div class="spacer">
-    <div class="load" *ngIf="!user">Loading</div>
 </div>
 
 <ng-template #withCart>
@@ -24,3 +23,5 @@
         <button mat-raised-button color="primary" [disabled]="user.cart.length === 0" (click)="handleCheckout()">Checkout</button>
     </div>
 </div>
+
+<app-loading *ngIf="loading"></app-loading>

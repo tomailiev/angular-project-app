@@ -15,7 +15,6 @@
 </ng-template>
 
 <div class="spacer">
-    <div class="load" *ngIf="!user">Loading</div>
 </div>
 <div class="profile-container" *ngIf="user">
     <div class="avatar">
@@ -39,7 +38,7 @@
             <div>Selling:</div>
             <div><a [routerLink]="['/ebikes/details', user.selling[0]._id]">{{user.selling[0].brand}}</a>...</div>
             <div>
-                <button mat-raised-button color="link" routerLink="/ebikes/sell">List Another</button>
+                <button mat-raised-button color="link" [routerLink]="['/user/myebikes', user._id]">See all</button>
             </div>
         </div>
         <mat-divider></mat-divider>
@@ -64,8 +63,10 @@
             <div>Owned:</div>
             <div><a [routerLink]="['/ebikes/details', user.owned[0]._id]">{{user.owned[0].brand}}</a>...</div>
             <div>
-                <button mat-raised-button color="link" routerLink="/ebikes/sell">See all</button>
+                <button mat-raised-button color="link" [routerLink]="['/user/myebikes', user._id]">See all</button>
             </div>
         </div>
     </div>
 </div>
+
+<app-loading *ngIf="!user"></app-loading>

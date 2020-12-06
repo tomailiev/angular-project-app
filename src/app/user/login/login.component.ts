@@ -10,18 +10,26 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
 
+  loading: boolean;
 
   constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    if (this.authService.warningMessage) {
+      this.openSnackBar(this.authService.warningMessage);
+      this.authService.warningMessage = null;
+    }
   }
 
   submitHandler(userData: { email: string, password: string }): void {
+    this.loading = true;
     this.authService.login(userData).subscribe(
       user => {
+        this.loading = false;
         this.openSnackBar('Login successful');
       },
       err => {
+        this.loading = false;
         this.openSnackBar(err.error ? err.error.message : err.message)
       },
       () => {

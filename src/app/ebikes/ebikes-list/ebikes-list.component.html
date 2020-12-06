@@ -34,8 +34,9 @@
     <a routerLink="/user/login">Login</a> to list yours!
 </ng-template>
 
+<app-loading *ngIf="ebikes === undefined"></app-loading>
 
 <div class="list-container">
     <h1>Find your dream E-bike!</h1>
-    <ng-container *ngTemplateOutlet=" ebikes && ebikes.length > 0 ? withEbikes : withoutEbikes"></ng-container>
+    <ng-container *ngTemplateOutlet="ebikes && ebikes.length > 0 ? withEbikes : withoutEbikes"></ng-container>
 </div>

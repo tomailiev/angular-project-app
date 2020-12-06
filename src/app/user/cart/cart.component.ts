@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   userId: string;
 
   total: number;
+  loading: boolean = true;
 
   constructor(private route: ActivatedRoute, private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
@@ -27,6 +28,7 @@ export class CartComponent implements OnInit {
         return this.authService.getOne(this.userId)
       })
     ).subscribe((user) => {
+      this.loading = false;
       this.user = user;
       this.total = this.user.cart.reduce((a, c) => a + c.price, 0);
     });
@@ -38,23 +40,28 @@ export class CartComponent implements OnInit {
   }
 
   handleEmptyCart(): void {
+    this.loading = true;
     this.authService.updateOne({ cart: [] })
       .subscribe((user: IUser) => {
+        this.loading = false;
         this.user = user;
         this.total = this.user.cart.reduce((a, c) => a + c.price, 0);
       })
   }
 
   handleCheckout(): void {
+    this.loading = true;
     const ebikeIds = this.user.cart.map((e: IEbike) => e._id);
     this.authService.updateOne({ $addToSet: { owned: { $each: ebikeIds } }, cart: [] })
       .subscribe(
         (user: IUser) => {
+          this.loading = false;
           this.user = user;
           this.total = 0;
           this.openSnackBar('Purchase complete. Enjoy your ride(s)!');
         },
         (err) => {
+          this.loading = false;
           this.openSnackBar(err.error ? err.error.message : err.message);
         },
         () => {

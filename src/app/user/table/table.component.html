@@ -20,6 +20,11 @@
         <td mat-cell *matCellDef="let item"> <strong>${{item.price}}</strong> </td>
     </ng-container>
 
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let item"> <strong>${{item.description}}</strong> </td>
+    </ng-container>
+
     <ng-container matColumnDef="move">
         <th mat-header-cell *matHeaderCellDef>Move to cart</th>
         <td mat-cell *matCellDef="let item">

@@ -1,0 +1,40 @@
+<ng-template #withSellingList>
+    <div class="items-section">
+        <app-table [columns]="columns" [user]="user" [userProp]="'selling'" (updated)="handleUpdate($event)"></app-table>
+    </div>
+</ng-template>
+
+<ng-template #noSellingContent>You are not selling any E-bikes. <a routerLink="/ebikes/list">List one now</a></ng-template>
+
+<ng-template #withoutSellingList>
+    <app-no-content [content]="noSellingContent">
+    </app-no-content>
+</ng-template>
+
+<ng-template #withOwnedList>
+    <div class="items-section">
+        <app-table [columns]="columns" [user]="user" [userProp]="'owned'" (updated)="handleUpdate($event)"></app-table>
+    </div>
+</ng-template>
+
+<ng-template #noOwnedContent>You don't own any E-bikes. Find some <a routerLink="/ebikes/list">here</a>!</ng-template>
+
+<ng-template #withoutOwnedList>
+    <app-no-content [content]="noOwnedContent">
+    </app-no-content>
+</ng-template>
+
+<div class="spacer">
+</div>
+<div class="selling-container" *ngIf="user">
+    <h1>Your listings</h1>
+    <ng-container *ngTemplateOutlet="user.selling.length > 0 ? withSellingList : withoutSellingList"></ng-container>
+</div>
+<div class="spacer">
+</div>
+<div class="owned-container" *ngIf="user">
+    <h1>Your purchases</h1>
+    <ng-container *ngTemplateOutlet="user.owned.length > 0 ? withOwnedList : withoutOwnedList"></ng-container>
+</div>
+
+<app-loading *ngIf="!user"></app-loading>

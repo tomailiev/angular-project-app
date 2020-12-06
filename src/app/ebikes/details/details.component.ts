@@ -32,8 +32,10 @@ export class DetailsComponent implements OnInit {
       })
     ).subscribe(ebike => {
       this.ebike = ebike;
-      this.isInCart = !!this.user.cart.find((x: IEbike) => x._id === ebike._id);
-      this.isInWishlist = !!this.user.wishlist.find((x: IEbike) => x._id === ebike._id);
+      if (this.user) {
+        this.isInCart = !!this.user.cart.find((x: IEbike) => x._id === ebike._id);
+        this.isInWishlist = !!this.user.wishlist.find((x: IEbike) => x._id === ebike._id);
+      }
     })
   }
 

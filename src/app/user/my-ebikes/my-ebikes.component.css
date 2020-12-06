@@ -1,0 +1,22 @@
+.spacer {
+    height: 50px;
+}
+
+.owned-container, .selling-container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+a {
+    color: royalblue;
+    text-decoration: none;
+} 
+
+h1 {
+    width: 90%;
+    margin: 20px auto;
+    text-align: center;
+    color: azure;
+    font-size: 34px;
+    font-weight: bold;
+}

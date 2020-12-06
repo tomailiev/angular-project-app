@@ -11,6 +11,7 @@ import { catchError, tap } from 'rxjs/operators';
 export class AuthService {
 
   currentUser: IUser;
+  warningMessage: string;
 
   get isLoggedIn(): boolean {
     return !!this.currentUser;

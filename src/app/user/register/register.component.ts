@@ -10,17 +10,22 @@ import { AuthService } from '../auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  loading: boolean;
+
   constructor(private authService: AuthService, private router: Router, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
   submitHandler(userData: {email: string, password: string, name: string}):void {
+    this.loading = true;
     this.authService.register(userData).subscribe(
       (user)=> {
+        this.loading = false;
         this.openSnackBar('Successful registration. Please log in');
       },
       (err) => {
+        this.loading = false;
         this.openSnackBar(err.error ? err.error.message : err.message)
       },
       () => {

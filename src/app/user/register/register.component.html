@@ -27,7 +27,7 @@
             <mat-label for="password">Password</mat-label>
             <input matInput #password="ngModel" type="password" name="password" ngModel required minlength="6"
                 placeholder="6 or more characters">
-            <mat-error *ngIf="password.touched && name.errors?.required">
+            <mat-error *ngIf="password.touched && password.errors?.required">
                 Please enter a password
             </mat-error>
             <mat-error *ngIf="password.touched && password.errors?.minlength">
@@ -44,3 +44,5 @@
     <div class="login-prompt">Already have an account? <a routerLink="/user/login"><strong>Login</strong></a> instead
     </div>
 </div>
+
+<app-loading *ngIf="loading"></app-loading>

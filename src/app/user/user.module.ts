@@ -18,6 +18,7 @@ import {MatTableModule} from '@angular/material/table';
 import {TableComponent} from './table/table.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MyEbikesComponent } from './my-ebikes/my-ebikes.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     ProfileComponent,
     CartComponent,
     WishlistComponent,
-    TableComponent
+    TableComponent,
+    MyEbikesComponent
   ],
   imports: [
     CommonModule,

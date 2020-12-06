@@ -1,17 +1,27 @@
-
 <div class="login-container">
     <h1>Log In</h1>
     <form #f="ngForm" (ngSubmit)="submitHandler(f.value)">
         <mat-form-field>
             <mat-label for="name">Email</mat-label>
-            <input matInput #email type="email" name="email" ngModel required>
+            <input matInput #email="ngModel" type="email" name="email" ngModel required email>
+            <mat-error *ngIf="email.touched && email.errors?.required">
+                Please enter your email
+            </mat-error>
+            <mat-error *ngIf="email.touched && email.errors?.email">
+                Please enter a valid email address
+            </mat-error>
         </mat-form-field>
         <mat-form-field>
             <mat-label for="password">Password</mat-label>
-            <input matInput #email type="password" name="password" ngModel required>
+            <input matInput #password="ngModel" type="password" name="password" ngModel required>
+            <mat-error *ngIf="password.touched && password.errors?.required">
+                Please enter a password
+            </mat-error>
         </mat-form-field>
         <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Login</button>
         <!-- <p>*=Required field</p> -->
     </form>
     <div class="register-prompt">No account? <a routerLink="/user/register"><strong>Register</strong></a> instead</div>
 </div>
+
+<app-loading *ngIf="loading"></app-loading>

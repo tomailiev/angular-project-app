@@ -17,3 +17,5 @@
 <div class="wishlist-container" *ngIf="user">
     <ng-container *ngTemplateOutlet="user.wishlist.length > 0 ? withList : withoutList"></ng-container>
 </div>
+
+<app-loading *ngIf="!user"></app-loading>

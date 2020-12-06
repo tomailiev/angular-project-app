@@ -1,3 +1,19 @@
+<ng-template #anyUser>
+    <button mat-flat-button color="primary" (click)="addToCart()" [disabled]="isInCart">Add to cart</button>
+    <button mat-flat-button color="primary" (click)="addToWishlist()" [disabled]="isInWishlist">Add to wishlist</button>
+</ng-template>
+
+<ng-template #noUser>
+    <div>Please <a routerLink="/user/login">Login</a> to see available actions</div>
+</ng-template>
+
+<ng-template #seller>
+    <div>You are this bike's seller</div>
+    <button mat-flat-button color="primary" [routerLink]="['/user/myebikes', user._id]">See all</button>
+</ng-template>
+
+<app-loading *ngIf="!ebike"></app-loading>
+
 <div class="details-container" *ngIf="!!ebike">
     <div class="titles">
         <h1>{{ebike.brand}}</h1>
@@ -27,12 +43,10 @@
                     Actions
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-action-row *ngIf="user && user._id !== ebike.creatorId">
-                <button mat-flat-button color="primary" (click)="addToCart()" [disabled]="isInCart">Add to cart</button>
-                <button mat-flat-button color="primary" (click)="addToWishlist()" [disabled]="isInWishlist">Add to wishlist</button>
+            <mat-action-row>
+                <ng-container *ngTemplateOutlet="!user ? noUser : user && user._id !== ebike.creatorId ? anyUser : seller"></ng-container>
             </mat-action-row>
         </mat-expansion-panel>
     </mat-accordion>
 </div>
 
-<div class="loader" *ngIf="!ebike">Loading</div>
