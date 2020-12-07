@@ -14,8 +14,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import {MatTableModule} from '@angular/material/table';
-import {TableComponent} from './table/table.component';
+import { MatTableModule } from '@angular/material/table';
+import { TableComponent } from './table/table.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MyEbikesComponent } from './my-ebikes/my-ebikes.component';
@@ -43,7 +43,7 @@ import { MyEbikesComponent } from './my-ebikes/my-ebikes.component';
     MatCardModule,
     MatTableModule,
     SharedModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   exports: [
     LoginComponent,

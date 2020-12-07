@@ -4,7 +4,8 @@
     </div>
     <div>
         <button mat-raised-button color="link" (click)="toggleNameEdit()">Cancel</button>
-        <button mat-raised-button color="link" (click)="updateName(newName.value)" [disabled]="newName.value.length < 3">Save</button>
+        <button mat-raised-button color="link" (click)="updateName(newName.value)"
+            [disabled]="newName.value.length < 3">Save</button>
     </div>
 </ng-template>
 <ng-template #nameNormalMode>
@@ -36,7 +37,7 @@
         <mat-divider></mat-divider>
         <div class="row" *ngIf="user.selling.length > 0">
             <div>Selling:</div>
-            <div><a [routerLink]="['/ebikes/details', user.selling[0]._id]">{{user.selling[0].brand}}</a>...</div>
+            <div>{{user.selling | stringSlicer}}</div>
             <div>
                 <button mat-raised-button color="link" [routerLink]="['/user/myebikes', user._id]">See all</button>
             </div>
@@ -44,7 +45,7 @@
         <mat-divider></mat-divider>
         <div class="row" *ngIf="user.cart.length > 0">
             <div>Cart:</div>
-            <div><a [routerLink]="['/ebikes/details', user.cart[0]._id]">{{user.cart[0].brand}}</a>...</div>
+            <div>{{user.cart | stringSlicer}}</div>
             <div>
                 <button mat-raised-button color="link" [routerLink]="['/user/cart', user._id]">View cart</button>
             </div>
@@ -52,7 +53,7 @@
         <mat-divider></mat-divider>
         <div class="row" *ngIf="user.wishlist.length > 0">
             <div>Wishlist:</div>
-            <div><a [routerLink]="['/ebikes/details', user.wishlist[0]._id]">{{user.wishlist[0].brand}}</a>...</div>
+            <div>{{user.wishlist | stringSlicer}}</div>
             <div>
                 <button mat-raised-button color="link" [routerLink]="['/user/wishlist', user._id]">View
                     wishlist</button>
@@ -61,7 +62,7 @@
         <mat-divider></mat-divider>
         <div class="row" *ngIf="user.owned.length > 0">
             <div>Owned:</div>
-            <div><a [routerLink]="['/ebikes/details', user.owned[0]._id]">{{user.owned[0].brand}}</a>...</div>
+            <div>{{user.owned | stringSlicer}}</div>
             <div>
                 <button mat-raised-button color="link" [routerLink]="['/user/myebikes', user._id]">See all</button>
             </div>

@@ -23,7 +23,7 @@ import { httpInterceptorProviders } from './Interceptors/';
     UserModule,
     BrowserAnimationsModule,
     EbikesModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]

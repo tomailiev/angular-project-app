@@ -26,7 +26,7 @@
         <mat-form-field>
             <mat-label for="password">Password</mat-label>
             <input matInput #password="ngModel" type="password" name="password" ngModel required minlength="6"
-                placeholder="6 or more characters">
+                placeholder="6 or more characters" appRePasswordValidator="rePassword" reverse="true">
             <mat-error *ngIf="password.touched && password.errors?.required">
                 Please enter a password
             </mat-error>
@@ -36,8 +36,11 @@
         </mat-form-field>
         <mat-form-field>
             <mat-label for="rePassword">Confirm Password</mat-label>
-            <input matInput #repeatPassword="ngModel" type="password" name="rePassword" ngModel required
-                placeholder="Must match password">
+            <input matInput #rePassword="ngModel" type="password" name="rePassword" ngModel required
+                appRePasswordValidator="password" placeholder="Must match password">
+            <mat-error *ngIf="rePassword.touched && rePassword.errors?.rePasswordValidator">
+                Password confirmation does not match password
+            </mat-error>
         </mat-form-field>
         <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">Register</button>
     </form>

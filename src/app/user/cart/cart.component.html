@@ -18,7 +18,7 @@
         <ng-container *ngTemplateOutlet="user.cart.length > 0 ? withCart : withoutCart"></ng-container>
     </div>
     <div class="checkout-section">
-        <h2>Total: ${{total}}</h2>
+        <h2>Total: {{total | priceString}}</h2>
         <button mat-stroked-button [disabled]="user.cart.length === 0" (click)="handleEmptyCart()">Empty cart</button>
         <button mat-raised-button color="primary" [disabled]="user.cart.length === 0" (click)="handleCheckout()">Checkout</button>
     </div>
