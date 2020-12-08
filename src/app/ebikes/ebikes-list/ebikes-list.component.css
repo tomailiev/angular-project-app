@@ -13,6 +13,8 @@
     left: 30px;
 }
 
+
+
 h1 {
     width: 90%;
     text-align: center;
@@ -24,6 +26,13 @@ h1 {
 .ebike-card {
     width: 300px;
     margin: 20px;
+    box-sizing: border-box;
+    transition: all 0.1s;
+}
+
+.ebike-card:hover {
+    border: 2px solid black;
+    background-color: rgba(235, 231, 231, 0.39);
 }
 
 

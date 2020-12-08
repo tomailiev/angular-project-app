@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" [@listAnimation]="dataSource.length">
 
     <ng-container matColumnDef="image">
         <th mat-header-cell *matHeaderCellDef> Bike </th>
@@ -40,5 +40,5 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
-    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;" [@mouseInOut]=" row.mouseIn ? 'in' : 'out'" (mouseenter)="row.mouseIn = true;" (mouseleave)="row.mouseIn = false"></tr>
 </table>

@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { listAnimation } from 'src/app/shared/animations/list';
+import { mouseInOut } from 'src/app/shared/animations/mouseInOut';
 import { IEbike } from 'src/app/shared/interfaces/ebike';
 import { IUser } from 'src/app/shared/interfaces/user';
 import { AuthService } from '../auth.service';
@@ -6,7 +8,11 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.css'],
+  animations: [
+    mouseInOut,
+    listAnimation
+  ]
 })
 export class TableComponent implements OnInit {
 

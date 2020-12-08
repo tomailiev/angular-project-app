@@ -7,7 +7,7 @@ import { EbikesApiService } from '../ebikes-api.service';
 @Component({
   selector: 'app-ebikes-list',
   templateUrl: './ebikes-list.component.html',
-  styleUrls: ['./ebikes-list.component.css']
+  styleUrls: ['./ebikes-list.component.css'],
 })
 export class EbikesListComponent implements OnInit {
 
