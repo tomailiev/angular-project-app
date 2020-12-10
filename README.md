@@ -1,27 +1,24 @@
 # ProjectApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+This is my final project for the Angular course at Softuni. It implements an E-bike store with authentication, selling, wishlisting, and buying functionality. The app uses a Node.JS json api, MongoDB database, and an Angular front-end.
 
-## Development server
+## Serve locally
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Clone the repo. Type `git clone https://github.com/tomailiev/angular-project-app.git` in a terminal.
+2. Navigate to the app folder and type `npm install` to install dependencies.
+3. Start the api by typing `npm run start:dev` in the terminal.
+4. Serve the Angular app with `ng s` and navigate to localhost:4200 in your browser or use `ng s --open` to serve and open the app in a new tab on your default browser.
 
-## Code scaffolding
+## Check it out in production mode
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Navigate to https://angular-final-project-app.herokuapp.com/ in your browser to see the latest build in production.
 
-## Build
+## Test functionality
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Create a user account through the register form. Upon logging in you with said account you will be able to create a listing, add an e-bike to your wishlist or cart, see and edit your profile, and see your listings/purchases.
 
-## Running unit tests
+## Bonus features
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Built with Angular Material.
+- Deployed on Heroku.
+- Implements Angular Animations.
