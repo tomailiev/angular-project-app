@@ -7,7 +7,7 @@ This is my final project for the Angular course at Softuni. It implements an E-b
 1. Clone the repo. Type `git clone https://github.com/tomailiev/angular-project-app.git` in a terminal.
 2. Navigate to the app folder and type `npm install` to install dependencies.
 3. Start the api by typing `npm run start:dev` in the terminal.
-4. Serve the Angular app with `ng s` or `ng s --open` to open it in a new window on your default browser.
+4. Serve the Angular app with `ng s` and navigate to localhost:4200 in your browser or use `ng s --open` to serve and open the app in a new tab on your default browser.
 
 ## Check it out in production mode
 
