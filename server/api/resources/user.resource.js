@@ -11,11 +11,12 @@ const router = Router();
 
 router.route('/')
     .get(userController.getAll)
-    .post(auth(false), userMiddleware.filterBody, loginController.login)
-    .put(auth(false), userMiddleware.validation(), userMiddleware.filterBody, loginController.register)
+    .post(auth(false), userMiddleware.validation(), userMiddleware.filterBody, loginController.register)
 
-router.route('/loginCheck')
+router.route('/auth')
+    .post(auth(false), userMiddleware.filterBody, loginController.login)
     .get(auth(true), loginController.loginCheck);
+
     
 router.route('/:id')
     .get(auth(true), userController.getOne)

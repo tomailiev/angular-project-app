@@ -40,11 +40,6 @@ export class DetailsComponent implements OnInit {
   }
 
   addToWishlist() {
-    // this.apiService.updateOne(this.ebike._id, 'wishlist', 'wishlisted')
-    //   .subscribe((values: { ebike: IEbike, user: IUser }) => {
-    //     this.user = values.user;
-    //     this.isInWishlist = true;
-    //   });
 
     this.authService.updateOne({ $addToSet: { wishlist: this.ebike._id } })
       .subscribe((user: IUser) => {

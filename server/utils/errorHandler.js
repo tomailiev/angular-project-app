@@ -1,7 +1,7 @@
 const { cookieName } = require('../config');
 module.exports = function (err, req, res, next) {
     console.log(err);
-    if (err.name === 'TokenExpiredError') {
+    if (err.name === 'TokenExpiredError' || err.name === 'InvalidTokenError') {
         res.clearCookie(cookieName);
         res.status(401).send({message: 'JWT expired. Please log in again'});
         return;

@@ -42,11 +42,16 @@ export class CartComponent implements OnInit {
   handleEmptyCart(): void {
     this.loading = true;
     this.authService.updateOne({ cart: [] })
-      .subscribe((user: IUser) => {
-        this.loading = false;
-        this.user = user;
-        this.total = this.user.cart.reduce((a, c) => a + c.price, 0);
-      })
+      .subscribe(
+        (user: IUser) => {
+          this.loading = false;
+          this.user = user;
+          this.total = this.user.cart.reduce((a, c) => a + c.price, 0);
+        },
+        (err) => {
+          this.loading = false;
+          this.openSnackBar(err.error ? err.error.message : err.message);
+        })
   }
 
   handleCheckout(): void {

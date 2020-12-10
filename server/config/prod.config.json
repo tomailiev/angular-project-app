@@ -14,9 +14,6 @@
             "post",
             "put"
         ],
-        "/api/v1/movies": [
-            "get"
-        ],
         "/api/v1/ebikes": [
             "get"
         ]

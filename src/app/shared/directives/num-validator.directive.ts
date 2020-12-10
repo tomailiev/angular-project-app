@@ -18,8 +18,6 @@ export class NumValidatorDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
     return control.value < 0 ? { numValidator: control.value } : null
   }
-  // registerOnValidatorChange?(fn: () => void): void {
-  //   throw new Error('Method not implemented.');
-  // }
+
 
 }

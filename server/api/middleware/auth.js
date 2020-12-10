@@ -2,30 +2,6 @@ const { jwtVerify } = require('../../utils/jwt');
 const { cookieName } = require('../../config');
 const User = require('../../models/user.model');
 
-// module.exports = function auth(req, res, next) {
-//     const cookies = req.cookies;
-//     const token = cookies[cookieName]
-//     if (!token) {
-//         const endpoint = allowedEndpoints[req.originalUrl];
-//         if (endpoint) {
-//             if (endpoint.includes(req.method.toLowerCase())) {
-//                 return next();
-//             } else {
-//                 return next({ message: 'Unathorized' })
-//             }
-//         } else {
-//             return next({ message: 'Unathorized' })
-//         }
-//     } else {
-//         jwt.verify(token, secret, (err, result) => {
-//             if (err) { return next({ message: err.message }) }
-//             res.locals.user = result;
-//             return next();
-//         });
-//     }
-
-// }
-
 module.exports = (shouldBeAuth) => {
     return function (req, res, next) {
         const token = req.cookies[cookieName];
@@ -46,11 +22,15 @@ module.exports = (shouldBeAuth) => {
                             name: 'TokenExpiredError'
                         });
                     }
-                    req.user = user;
+                    if (req.params.id) {
+                        if (req.params.id != user._id) {
+                            throw ({
+                                message: 'Not authenticated',
+                                name: 'InvalidTokenError'
+                            });
+                        }
+                    }
                     res.locals.user = user;
-                    // res.locals.loggedInUser = {};
-                    // res.locals.loggedInUser.email = user.email;
-                    // res.locals.loggedInUser.id = user.id;
                     return next();
                 })
                 .catch(next);

@@ -20,14 +20,14 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   login(data: { email: string, password: string }): Observable<IUser> {
-    return this.http.post<IUser>(`${environment.apiUrl}/users`, data)
+    return this.http.post<IUser>(`${environment.apiUrl}/users/auth`, data)
       .pipe(
         tap((user: IUser) => this.currentUser = user)
       );
   }
 
   register(data: { email: string, password: string, name: string }): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}/users`, data);
+    return this.http.post<any>(`${environment.apiUrl}/users`, data);
   }
 
   logout(): Observable<any> {
@@ -44,7 +44,7 @@ export class AuthService {
   }
 
   getCurrentUser(): Observable<IUser | null> {
-    return this.http.get<IUser>(`${environment.apiUrl}/users/loginCheck`)
+    return this.http.get<IUser>(`${environment.apiUrl}/users/auth`)
       .pipe(
         tap((user: IUser) => {
           this.currentUser = user;

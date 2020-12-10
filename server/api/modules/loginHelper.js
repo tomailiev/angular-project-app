@@ -43,15 +43,6 @@ module.exports = function (model) {
             .then(doc => {
                 if (doc) { return next({ message: 'Email taken. Did you mean to log in?' }) }
                 return model.create({ email, password, name });
-                // bcrypt.genSalt(saltRounds, (err, salt) => {
-                //     if (err) { return next(err) }
-                //     bcrypt.hash(password, salt, (err, hash) => {
-                //         if (err) { return next(err) }
-                //         model.create({ email, password: hash })
-                //             .then(doc => res.status(201).json({ success: true }))
-                //             .catch(next)
-                //     })
-                // })
             })
             .then(user => {
                 if (!user) {
@@ -71,16 +62,13 @@ module.exports = function (model) {
         if (res.locals.user) {
             model.findOne({ _id: res.locals.user._id })
                 .then(doc => {
-                    console.log(doc);
                     res.status(200).send(doc);
                     return;
                 })
                 .catch((e) => {
-                    console.log(e);
                     return next(e)
                 });
         } else {
-            console.log('fuck me');
             res.status(200).send({});
         }
     }
