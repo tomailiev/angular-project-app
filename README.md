@@ -1,10 +1,10 @@
 # ProjectApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+This is my final project for the Angular course at Softuni. It implements an E-bike store with authentication, selling, wishlisting, and buying functionality. The app uses a Node.JS json api and an Angular front-end.
 
-## Development server
+## Serve locally
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Clone the repo.
 
 ## Code scaffolding
 
