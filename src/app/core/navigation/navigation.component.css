@@ -3,16 +3,16 @@
         display: block;
     }
 
-    div.container.left {
+    nav.container.left {
         display: none;
     }
 
-    div.container.left.open {
+    nav.container.left.open {
         display: block;
         justify-self: center;
-    }
+    } 
 
-    div.container.left.open>button {
+    nav.container.left.open>button {
         display: block;
     }
 

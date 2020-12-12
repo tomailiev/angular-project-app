@@ -1,20 +1,20 @@
 <header color="primary">
     <div class="container">
         <button mat-button class="home-icon" routerLink="/">
-            <img src="https://cdn2.iconfinder.com/data/icons/ecology-173/100/e-bike-ecology-electric-vehicles-transport-bicycle-byke-flash-thunderbolt-sign-32.png" alt="Store logo">
+            <img src="https://cdn2.iconfinder.com/data/icons/ecology-173/100/e-bike-ecology-electric-vehicles-transport-bicycle-byke-flash-thunderbolt-sign-32.png"
+                alt="Store logo">
         </button>
         <button mat-button class="responsive-menu" (click)="isMenuOpen = !isMenuOpen">
             <mat-icon aria-hidden="false" aria-label="menu">menu</mat-icon>
-        </button>    
+        </button>
     </div>
-
-    <div class="container left" [ngClass]="isMenuOpen ? 'open' : ''">
+    <nav class="container left" [ngClass]="isMenuOpen ? 'open' : ''">
         <button mat-button routerLink="/">Home</button>
         <button mat-button routerLink="/about">About</button>
         <button mat-button routerLink="/ebikes/list">E-bikes</button>
         <!-- <button mat-button routerLink="/contact">Contact</button> -->
         <button mat-button routerLink="/ebikes/sell" [disabled]="!isLoggedIn">Sell</button>
-    </div>
+    </nav>
 
     <div class="container right">
         <button mat-button [matMenuTriggerFor]="userMenu">
@@ -32,7 +32,7 @@
                 <button mat-menu-item (click)="logoutHandler()">Logout</button>
             </div>
         </mat-menu>
-        <button *ngIf="!!currentUser" mat-button [disabled]="!hasCart" [routerLink]="['/user/cart', currentUser._id]"> 
+        <button *ngIf="!!currentUser" mat-button [disabled]="!hasCart" [routerLink]="['/user/cart', currentUser._id]">
             <mat-icon aria-hidden="false" aria-label="shopping cart icon">shopping_cart</mat-icon>
         </button>
     </div>
