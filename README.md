@@ -1,6 +1,6 @@
-# ProjectApp
+# Angular-NodeJS Mockup store
 
-This is my final project for the Angular course at Softuni. It implements an E-bike store with authentication, selling, wishlisting, and buying functionality. The app uses a Node.JS json api, MongoDB database, and an Angular front-end.
+This is a project that implements an E-bike store with authentication, selling, wishlisting, and buying functionalities. The app uses a Node.JS json api, MongoDB database, and an Angular front-end.
 
 ## Serve locally
 
@@ -16,9 +16,3 @@ Navigate to https://angular-final-project-app.herokuapp.com/ in your browser to 
 ## Test functionality
 
 Create a user account through the register form. Upon logging in you with said account you will be able to create a listing, add an e-bike to your wishlist or cart, see and edit your profile, and see your listings/purchases.
-
-## Bonus features
-
-- Built with Angular Material.
-- Deployed on Heroku.
-- Implements Angular Animations.
